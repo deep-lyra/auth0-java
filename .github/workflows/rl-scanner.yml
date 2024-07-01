@@ -5,7 +5,7 @@ on:
   merge_group:
   workflow_dispatch:
   push:
-    branches: ['main']
+    branches: ["main"]
   pull_request:
     types:
       - opened
@@ -41,6 +41,9 @@ jobs:
         id: output_build_artifact
         run: |
           echo "scanfile=$( ls build/libs/*.jar )" >> $GITHUB_OUTPUT
+
+      - name: List build/libs contents
+        run: ls -la build/libs
 
       - name: Scan packages with rl-secure
         id: scan
